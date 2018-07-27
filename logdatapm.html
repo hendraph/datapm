@@ -1,0 +1,322 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>PENERIMA MANFAAT TAHUN 2018</title>
+        <script src="files/js/jquery.min.js"></script>
+        <script src="files/bootstrap/js/bootstrap.min.js"></script>
+		<link rel="stylesheet" href="files/bootstrap/css/bootstrap.min.css">
+    </head>
+	
+	
+	
+	<!-- SCRIPT LOGIN -->
+	
+	<!-- Include CSS File Here -->
+	<!--<link rel="stylesheet" href="css/style.css"/> -->
+	<!-- Include JS File Here -->
+	<script src="js/login.js"></script> 
+	
+	
+		
+	<!-- END -->		
+			
+    <body onload="muatDaftarData();">
+        
+        <div class="col-md-8 col-md-offset-2" ng-controller="listContactCtrl">
+            <div class="page-header">
+                <h1>
+                    <center>DATA PENERIMA MANFAAT TAHUN 2018</center>
+               </h1>
+                <!-- <ul class="nav nav-pills">
+                  <li><a id="nav-list-data" href="javascript:void(0);" onclick="gantiMenu('list-data');">Daftar Penerima Manfaat</a></li>
+                  <li><a id="nav-tambah-data" href="javascript:void(0);" onclick="gantiMenu('tambah-data');">Tambah Data</a></li>  
+				  </ul> -->
+				  
+				  
+			<!-- LOGIN -->
+
+			<div class="container">
+			<div class="main">
+			<form id="form_id" method="post" name="myform">
+			<label>User Name :</label>
+			<input type="text" name="username" id="username"/>
+			<label>Password :</label>
+			<input type="password" name="password" id="password"/>
+			<input type="button" value="Login" id="submit" onclick="validate()"/>
+			</form>   
+			
+			<!-- END -->
+
+
+            </div>
+            <div id="tambah-data" class="well" style="display:none;">
+                <form id="form-data">
+					<div id="name-group" class="form-group"> <!-- Tambahan -->
+                        <label>No Registrasi:</label> 
+                        <input type="text" class="form-control" id="noreg" name="noreg" placeholder="contoh: Nomor Registrasi" /><br/>
+                    </div>
+                    <div id="name-group" class="form-group">
+                        <label>Nama:</label> 
+                        <input type="text" class="form-control" id="nama" name="nama" placeholder="contoh: Budi" /><br/>
+                    </div>
+                    <div id="alamat-group" class="form-group">
+                        <label>Alamat:</label> 
+                        <input type="text" class="form-control" id="alamat" name="alamat" placeholder="contoh: Indonesia" /><br/>
+                    </div>
+					<div id="alamat-group" class="form-group"> <!-- Tambahan -->
+                        <label>Jenis Kelamin:</label> 
+                        <input type="text" class="form-control" id="jk" name="jk" placeholder="contoh: Laki / Perempuan" /><br/>
+                    </div>
+					<div id="alamat-group" class="form-group"> <!-- Tambahan -->
+                        <label>Tempat Lahir:</label> 
+                        <input type="text" class="form-control" id="tth" name="tth" placeholder="contoh: Pati" /><br/>
+                    </div>
+					<div id="alamat-group" class="form-group"> <!-- Tambahan -->
+                        <label>Tanggal Lahir:</label> 
+                        <input type="text" class="form-control" id="ttl" name="ttl" placeholder="contoh: 1 Januari 2000" /><br/>
+                    </div>
+                    <div id="ket-group" class="form-group">
+                        <label>Keterangan:</label> 
+                        <textarea class="form-control" id="ket" name="ket" placeholder="contoh: Ciri ciri ..."></textarea><br/>
+                    </div>
+                    <!-- <input type="button" value="Simpan" onclick="simpanData();" class="btn btn-success btn-small"/> -->
+                    <!-- <input type="reset" value="Reset" onclick="" class="btn btn-warning btn-small"/> -->
+                </form>						
+            </div>
+            <div id="edit-data" class="well" style="display:none;">
+                <form id="eform-data">
+				
+                    <div id="name-group" class="form-group" style="display:none;">
+                        <label>ID:</label> 
+                        <input type="text" class="form-control" id="eid_data" name="nama" placeholder="" /><br/>
+                    </div>
+				
+                    <div id="name-group" class="form-group"> <!-- Tambahan -->
+                        <label>No Registrasi:</label> 
+                        <input type="text" class="form-control" id="enoreg" name="noreg" placeholder="contoh: Nomor Registrasi" /><br/>
+                    </div>
+					<div id="name-group" class="form-group">
+                        <label>Nama:</label> 
+                        <input type="text" class="form-control" id="enama" name="nama" placeholder="contoh: Budi" /><br/>
+                    </div>
+                    <div id="alamat-group" class="form-group">
+                        <label>Alamat:</label> 
+                        <input type="text" class="form-control" id="ealamat" name="alamat" placeholder="contoh: Jalan Soediono Desa ...." /><br/>
+                    </div>
+					<div id="alamat-group" class="form-group"> <!-- Tambahan -->
+                        <label>Jenis Kelamin:</label> 
+                        <input type="text" class="form-control" id="ejk" name="jk" placeholder="contoh: Jalan Soediono Desa ...." /><br/>
+                    </div>
+					<div id="alamat-group" class="form-group"> <!-- Tambahan -->
+                        <label>Tempat Lahir:</label> 
+                        <input type="text" class="form-control" id="etth" name="tth" placeholder="contoh: Pati" /><br/>
+                    </div>
+					<div id="alamat-group" class="form-group"> <!-- Tambahan -->
+                        <label>Tanggal Lahir:</label> 
+                        <input type="text" class="form-control" id="ettl" name="ttl" placeholder="contoh: 1 Januari 2000" /><br/>
+                    </div>
+                    <div id="ket-group" class="form-group">
+                        <label>Keterangan:</label> 
+                        <textarea class="form-control" id="eket" name="ket" placeholder="contoh: Ciri ciri ..."></textarea><br/>
+                    </div>
+                    <input type="button" value="Simpan" onclick="simpanEditData();" class="btn btn-success btn-small"/>
+                    <input type="reset" value="Reset" onclick="" class="btn btn-warning btn-small"/>
+                    <input type="button" value="Cancel" onclick="gantiMenu('list-data');" class="btn btn-warning btn-small"/>
+                </form>
+            </div>
+            <div id="list-data" class="well">
+                Tidak ada data...
+            </div>
+        </div>
+        
+    </body>
+    <script type="text/javascript">
+        function muatDaftarData(){
+            if (localStorage.daftar_data && localStorage.id_data){
+            
+                daftar_data = JSON.parse(localStorage.getItem('daftar_data'));
+               
+                var data_app = "";
+                
+                if (daftar_data.length > 0){
+                    data_app = '<table class="table">';
+                    data_app += '<thead>'+
+                                        '<th>Id</th>'+
+										'<th>No Registrasi</th>'+ <!-- Tambahan -->
+                                        '<th>nama</th>'+
+                                        '<th>alamat</th>'+
+										'<th>Jenis Kelamin</th>'+ <!-- Tambahan -->
+										'<th>Tempat Lahir</th>'+ <!-- Tambahan -->
+										'<th>Tanggal Lahir</th>'+ <!-- Tambahan -->
+                                        '<th>keterangan</th>'+
+                                        <!-- '<th>aksi</th>'+ -->
+                                        <!-- '<th>aksi 2</th>'+ -->
+                                        '</thead><tbody>';
+                                      
+                    for (i in daftar_data){
+                        data_app += '<tr>';
+                        data_app += '<td>'+ daftar_data[i].id_data + ' </td>'+
+										  '<td>'+ daftar_data[i].noreg + ' </td>'+ <!-- Tambahan -->
+                                          '<td>'+ daftar_data[i].nama + ' </td>'+
+                                          '<td>'+ daftar_data[i].alamat + ' </td>'+
+										  '<td>'+ daftar_data[i].jk + ' </td>'+ <!-- Tambahan -->
+										  '<td>'+ daftar_data[i].tth + ' </td>'+ <!-- Tambahan -->
+										  '<td>'+ daftar_data[i].ttl + ' </td>'+ <!-- Tambahan -->
+                                          '<td>'+ daftar_data[i].ket + ' </td>'+
+                                          '<td><a class="" href="javascript:void(0)" onclick="hapusData(\''+daftar_data[i].id_data+'\')"></a></td>'+ <!-- Edit <td><a class="btn btn-danger btn-small" dan --Nama Hapus di "></a></td>' -->
+                                          '<td><a class="" href="javascript:void(0)" onclick="editData(\''+daftar_data[i].id_data+'\')"></a></td>'; <!-- Edit <a class="btn btn-danger btn-small" -- Nama Edit di "></a></td>' -->
+                        data_app += '</tr>';
+                        
+                    }
+                   data_app += '</tbody></table>';
+               
+                }
+                else {
+                    data_app = "Tidak ada data...";
+                }
+               
+                
+               $('#list-data').html(data_app);
+               $('#list-data').hide();
+               $('#list-data').fadeIn(100);
+            }
+        }
+		
+		function editData(id){
+		
+            if (localStorage.daftar_data && localStorage.id_data){
+                daftar_data = JSON.parse(localStorage.getItem('daftar_data'));			
+				idx_data = 0;
+                for (i in daftar_data){
+                    if (daftar_data[i].id_data == id){
+						$("#eid_data").val(daftar_data[i].id_data);
+						$("#enoreg").val(daftar_data[i].noreg); <!-- Tambahan -->
+						$("#enama").val(daftar_data[i].nama);
+						$("#ealamat").val(daftar_data[i].alamat);
+						$("#ejk").val(daftar_data[i].alamat); <!-- Tambahan -->
+						$("#etth").val(daftar_data[i].alamat); <!-- Tambahan -->
+						$("#ettl").val(daftar_data[i].alamat); <!-- Tambahan -->
+						$("#eket").val(daftar_data[i].ket);
+						daftar_data.splice(idx_data, 1);
+                    }
+                    idx_data ++;
+                }
+				gantiMenu('edit-data');
+				
+            }
+			
+		}
+        
+        
+        function simpanData(){
+			noreg = $('#noreg').val(); <!-- Tambahan -->
+            nama = $('#nama').val();
+            alamat = $('#alamat').val();
+			jk = $('#jk').val(); <!-- Tambahan -->
+			tth = $('#tth').val(); <!-- Tambahan -->
+			ttl = $('#ttl').val(); <!-- Tambahan -->
+            ket = $('#ket').val();
+            
+            if (localStorage.daftar_data && localStorage.id_data){
+                daftar_data = JSON.parse(localStorage.getItem('daftar_data'));
+                id_data = parseInt(localStorage.getItem('id_data'));
+            }
+            else {
+                daftar_data = [];
+                id_data = 0;
+            }
+
+            id_data ++;
+            daftar_data.push({'id_data':id_data, 'noreg':noreg, 'nama':nama, 'alamat':alamat, 'jk':jk, 'tth':tth, 'ttl':ttl, 'ket':ket}); <!-- Edit Tambah -->
+            localStorage.setItem('daftar_data', JSON.stringify(daftar_data));
+            localStorage.setItem('id_data', id_data);
+            document.getElementById('form-data').reset();
+            gantiMenu('list-data');
+            
+            return false;
+        }
+		
+        function simpanEditData(){
+            id_data = $('#eid_data').val();
+			noreg = $('#enoreg').val(); <!-- Tambahan -->
+            nama = $('#enama').val();
+            alamat = $('#ealamat').val();
+			jk = $('#ejk').val(); <!-- Tambahan -->
+			tth = $('#etth').val(); <!-- Tambahan -->
+			ttl = $('#ettl').val(); <!-- Tambahan -->
+            ket = $('#eket').val();
+            
+            daftar_data.push({'id_data':id_data, 'noreg':noreg, 'nama':nama, 'jk':jk, 'tth':tth, 'ttl':ttl, 'alamat':alamat, 'ket':ket}); <!-- Edit Tambah -->
+            localStorage.setItem('daftar_data', JSON.stringify(daftar_data));
+            document.getElementById('eform-data').reset();
+            gantiMenu('list-data');
+            
+            return false;
+        }
+        
+        function hapusData(id){
+            if (localStorage.daftar_data && localStorage.id_data){
+                daftar_data = JSON.parse(localStorage.getItem('daftar_data'));
+                
+                idx_data = 0;
+                for (i in daftar_data){
+                    if (daftar_data[i].id_data == id){
+                        daftar_data.splice(idx_data, 1);
+                    }
+                    idx_data ++;
+                }
+               
+                localStorage.setItem('daftar_data', JSON.stringify(daftar_data));
+                muatDaftarData();
+            }
+        }
+		
+
+        function gantiMenu(menu){
+            if (menu == "list-data"){
+                muatDaftarData();
+                $('#tambah-data').hide();
+                $('#list-data').fadeIn();
+				$('#edit-data').hide();
+            }
+            else if (menu == "tambah-data"){
+                $('#tambah-data').fadeIn();
+                $('#list-data').hide();
+				$('#edit-data').hide();
+            }else if (menu == "edit-data"){
+                $('#edit-data').fadeIn();
+                $('#tambah-data').hide();
+                $('#list-data').hide();
+            }
+        }
+		
+		
+												<!-- COUNTER LOGIN ++ -->
+												
+												var attempt = 5; // Variable to count number of attempts.
+												// Below function Executes on click of login button.
+												function validate(){
+												var username = document.getElementById("username").value;
+												var password = document.getElementById("password").value;
+												if ( username == "assesmen" && password == "value"){
+												alert ("Login successfully");
+												window.location = "elbin1cnif.html"; // Redirecting to other page.
+												return false;
+												}
+												else{
+												attempt --;// Decrementing by one.
+												alert("You have left "+attempt+" attempt;");
+												// Disabling fields after 5 attempts.
+												if( attempt == 0){
+												document.getElementById("username").disabled = true;
+												document.getElementById("password").disabled = true;
+												document.getElementById("submit").disabled = true;
+												return false;
+												}
+												}
+												}
+												
+												<!-- COUNTER LOGIN ++ -->
+
+    </script>
+</html>
